@@ -69,7 +69,7 @@ These are the available scripts you can run:
 1️⃣ Clone the repository:
 
 ```sh
- git clone https://github.com/your-repo/Furniro-Marketplace-Builder-Hackathon-2025.git
+(https://github.com/Roohia-Bashir/Furniro-Marketplace-Builder-Hackathon-2025.git)
 ```
 
 2️⃣ Install dependencies:
