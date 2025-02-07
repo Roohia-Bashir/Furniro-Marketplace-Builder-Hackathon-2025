@@ -1,53 +1,73 @@
-import React from "react";
-import Image from "next/image";
-import { browseRange } from "@/constant/browseRange";
+//src\components\browserange\Browserange.tsx
+import React from 'react';
+import Image from 'next/image';
 
-function Browserange() {
+import { client } from '@/sanity/lib/client';
+
+
+async function  Browserange() {
+
+  interface Icard {
+    cardHeading: string
+    cardImage: string
+  }
+  
+  const res: Icard[] = await client.fetch(`*[_type == "landingPage"].sections[ _type == "browseSection"].card[]{
+  "cardHeading": cardHeading,
+  "cardImage": cardImage.asset->url
+}
+
+
+`)
+
+  
+  
+
   return (
-    <>
-      <section className="mt-[56.47px] w-[1183px] pl-[131px] pr-[126px] m-auto mb-40 font-poppins">
-        {/* top heading */}
-        <div className="flex justify-center flex-col items-center">
-          <h1 className="text-[32px] leading-[48px] font-bold text-black text-center">
-            Browse The Range
-          </h1>
-          <p className="text-[20px] leading-[30px] text-black text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
+    <section className="px-4  mx-auto mb-20 font-poppins  w-[1183px] exsm:w-[80%] ">
+      
+      {/* Top Heading Section */}
+      <div className="flex flex-col items-center text-center w-full ">
+        <h1 className="text-2xl  leading-[36px]  font-bold text-black">
+          Browse The Range
+        </h1>
+        <p className="text-16 leading-[24px]  text-black mt-2">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+      </div>
 
-        {/* card body */}
+      {/* Card Body Section */}
+      <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-5   exsm:pl-1  ">
+        {(res).map((item: Icard, index: number) => {return(
 
-        <div className="mt-[62.29px] flex  items-center  justify-center  gap-[20px] w-full ">
-          {browseRange.map((item, index) => {
-            return (
-              <div
-                className="flex items-center justify-center flex-col"
-                key={index}
-              >
-                {/* top image */}
-                <div className="w-[381px] h-[480px] ">
-                  <Image
-                    src={item.src}
-                    alt="dining"
-                    width={"381"}
-                    height={"480"}
-                  ></Image>
-                </div>
+<div className="flex flex-col  items-center shadow-lg rounded-md overflow-hidden " key={index}>
+            
+            {/* Top Image Container */}
+            <div className='transition-transform duration-300 hover:scale-105'>
+              <Image
+                src={item.cardImage}
+                alt="images"
+                width={381}
+                height={480}
+                className="rounded-lg"
+              />
+            </div>
 
-                {/* card text */}
-
-                <div>
-                  <h1 className="text-[24px] leading-[36px] font-semibold text-black text-center">
-                    {item.name}
-                  </h1>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-    </>
+            {/* Card Text Section */}
+            <div className="mt-4">
+              <h2 className=" text-4xl  
+              leading-[28px] 
+              font-semibold 
+              text-[24px]
+               text-black 
+               text-center">
+                {item.cardHeading}
+              </h2>
+            </div>
+          </div>
+        )})}
+      </div>
+    </section>
   );
 }
 

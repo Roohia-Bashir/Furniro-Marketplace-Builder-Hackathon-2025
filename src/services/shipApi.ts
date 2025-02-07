@@ -6,7 +6,7 @@ export async function getShipments() {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "API-Key": process.env.SHIPENGINE_API_KEY as string,
+      "API-Key": process.env.NEXT_PUBLIC_SHIPMENT_API_KEY as string,
     },
   });
 
@@ -38,7 +38,7 @@ export async function postRequest(item: data) {
     const res = await fetch(`https://api.shipengine.com/v1/labels`, {
       method: "POST",
       headers: {
-        "API-Key": process.env.SHIPENGINE_API_KEY as string,
+        "API-Key": process.env.NEXT_PUBLIC_SHIPMENT_API_KEY as string,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -60,9 +60,9 @@ export async function postRequest(item: data) {
             company_name: item.from_company,
             phone: item.from_phone,
             address_line1: item.from_address,
-            city_locality: "Karachi",
+            city_locality: "Austin",
             state_province: "TX",
-            postal_code: "75800",
+            postal_code: "78731",
             country_code: "US",
             address_residential_indicator: "no",
           },

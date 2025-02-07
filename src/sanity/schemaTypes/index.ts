@@ -16,8 +16,9 @@ import { landingPage } from './landingPage-sections/landingPage'
 import { hero } from './landingPage-sections/hero'
 import { ourProducts } from './landingPage-sections/ourProducts'
 import { userSchema } from './user'
+import { browseSection } from './landingPage-sections/browseSection'
 
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blogPage,blogMain,category,relatedPost,product,comment,landingPage,hero,ourProducts,mainBox,pC,relatedProduct,relatedProductSection,userSchema],
+  types: [blogPage,browseSection,blogMain,category,relatedPost,product,comment,landingPage,hero,ourProducts,mainBox,pC,relatedProduct,relatedProductSection,userSchema],
 }

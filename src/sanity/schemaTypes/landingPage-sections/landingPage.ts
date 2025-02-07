@@ -12,6 +12,8 @@ of: [
     {type: 'heroSection'},
 
     {type: 'ourProducts'},
+
+    {type: 'browseSection'},
 ],
 
 
